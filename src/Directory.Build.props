@@ -5,7 +5,11 @@
     <Authors>OpenSearch Project and contributors</Authors>
     <Copyright>OpenSearch</Copyright>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/opensearch-project/opensearch-net-abstractions</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Bit-Quill/opensearch-net-abstractions-1</RepositoryUrl>
+    <!-- Use the value below when merging to upstream.
+       <RepositoryUrl>https://github.com/opensearch-project/opensearch-net-abstractions</RepositoryUrl>
+    -->
+    <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://github.com/opensearch-project/opensearch-net-abstractions</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/opensearch-project/opensearch-net-abstractions/releases</PackageReleaseNotes>
 
