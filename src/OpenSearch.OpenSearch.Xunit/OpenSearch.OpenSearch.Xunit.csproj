@@ -4,7 +4,7 @@
     <IsPackable>True</IsPackable>
     <Description>Provides an Xunit test framework allowing you to run integration tests against local ephemeral OpenSearch clusters</Description>
     <PackageTags>opensearch,opensearch,xunit,cluster,integration,test,ephemeral</PackageTags>
-    <RepositoryUrl>https://www.github.com/Bit-Quill/opensearch-net-abstractions-1</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Bit-Quill/opensearch-net-abstractions-1.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
   </PropertyGroup>
   <ItemGroup>
