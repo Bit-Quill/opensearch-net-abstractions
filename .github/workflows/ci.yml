@@ -42,7 +42,7 @@ jobs:
       if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
       shell: bash
       run:  |
-         OWNER=${{GITHUB_REPOSITORY_OWNER}}
+         OWNER=$GITHUB_REPOSITORY_OWNER
          NUGET_REPO="https://nuget.pkg.github.com/$OWNER/index.json"
          dotnet nuget add source --username $OWNER --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "$NUGET_REPO"  
          dotnet nuget push 'build/output/*.nupkg' -s github -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate --no-symbols true
