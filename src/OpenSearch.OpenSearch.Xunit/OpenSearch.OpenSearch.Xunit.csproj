@@ -4,6 +4,7 @@
     <IsPackable>True</IsPackable>
     <Description>Provides an Xunit test framework allowing you to run integration tests against local ephemeral OpenSearch clusters</Description>
     <PackageTags>opensearch,opensearch,xunit,cluster,integration,test,ephemeral</PackageTags>
+    <RepositoryUrl>https://nuget.pkg.github.com/Bit-Quill/index.json</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="xunit" Version="2.3.1" />
