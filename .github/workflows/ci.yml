@@ -46,8 +46,17 @@ jobs:
          NUGET_REPO="https://nuget.pkg.github.com/$OWNER/index.json"
          dotnet nuget add source --username $OWNER --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "$NUGET_REPO"  
          dotnet nuget push 'build/output/*.nupkg' -s github -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate --no-symbols true
+  delete-stale-pre-release-packages:
+    runs-on: ubuntu-18.04
+    needs: build
+    strategy:
+      matrix:
+        # Is this list the same as the nuget packages generated in opensearch-net-abstractions repo?
+        package: [OpenSearch.OpenSearch.Ephemeral, OpenSearch.OpenSearch.Managed, OpenSearch.OpenSearch.Xunit, OpenSearch.Stack.ArtifactsApi]
+    steps:
     - uses: actions/delete-package-versions@v3
       with: 
-        package-name: 'OpenSearch.OpenSearch.Ephemeral'
+        package-name: ${{ matrix.package }}
         min-versions-to-keep: 1
         delete-only-pre-release-versions: "true"
+
