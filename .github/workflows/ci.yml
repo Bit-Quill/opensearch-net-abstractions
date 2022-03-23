@@ -24,6 +24,7 @@ jobs:
       with:
         dotnet-version: '5.0.100'
   
+    # TODO: Update line below to match upstream.
     - run: dotnet nuget add source --username Bit-Quill --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/Bit-Quill/index.json"  
       name: Add GitHub NuGet Repository as a Package Source
     - run: ./build.sh build -s true
@@ -38,10 +39,10 @@ jobs:
         path: build/output/*
 
     - run: ./build.sh validatepackages -s true
-      name: "validate *.npkg files that were created"
+      name: Validate *.npkg files that were created
 
-    - name: publish canary packages github package repository
-      #if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
+    - name: Publish canary packages GitHub package repository
+      if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
       shell: bash
       run:  |
-         dotnet nuget push 'build/output/*Xunit*.nupkg' -s github -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate --no-symbols true
+         dotnet nuget push 'build/output/*.nupkg' -s github -k ${{secrets.GITHUB_TOKEN}} --skip-duplicate --no-symbols true
