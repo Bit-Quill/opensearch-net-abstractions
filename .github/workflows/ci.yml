@@ -39,7 +39,7 @@ jobs:
       name: Validate *.npkg files that were created
 
     - name: Publish packages to GitHub package repository
-      if: github.event_name == 'push' && startswith(github.ref, 'refs/heads')
+      if: github.event_name == 'push' && startswith(github.ref, 'refs/heads/main')
       shell: bash
       run:  |
          OWNER=$GITHUB_REPOSITORY_OWNER
