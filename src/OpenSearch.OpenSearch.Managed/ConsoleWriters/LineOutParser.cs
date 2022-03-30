@@ -58,7 +58,7 @@ namespace OpenSearch.OpenSearch.Managed.ConsoleWriters
 		private static readonly Regex ConsoleLineParser =
 			new Regex(@"\[(?<date>.*?)\]\[(?<level>.*?)\](?:\[(?<section>.*?)\])(?: \[(?<node>.*?)\])? (?<message>.+)");
 
-		private static readonly Regex PortParser = new Regex(@"bound_address(opensearch)? {.+\:(?<port>\d+)}");
+		private static readonly Regex PortParser = new Regex(@"bound_address(es)? {.+\:(?<port>\d+)}");
 
 		//[2016-09-26T11:43:17,475][INFO ][o.e.n.Node               ] [readonly-node-a9c5f4] version[5.0.0-beta1], pid[13172], build[7eb6260/2016-09-20T23:10:37.942Z], OS[Windows 10/10.0/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_101/25.101-b13]
 		private static readonly Regex InfoParser =
@@ -79,14 +79,14 @@ namespace OpenSearch.OpenSearch.Managed.ConsoleWriters
 			section = match.Groups["section"].Value.Trim().Replace("org.opensearch.", "");
 			node = match.Groups["node"].Value.Trim();
 			message = match.Groups["message"].Value.Trim();
-			started = TryGetStartedConfirmation(section, message);
+			started = TryGetStartedConfirmation(section, message, node);
 			return true;
 		}
 
-		private static bool TryGetStartedConfirmation(string section, string message)
+		private static bool TryGetStartedConfirmation(string section, string message, string node)
 		{
-			var inNodeSection = section == "o.e.n.Node" || section == "node";
-			return inNodeSection && message == "started";
+			var inNodeSection = section == "c.a.o.s.c.ConfigurationRepository";
+			return inNodeSection && message == "Node '" + node + "' initialized";
 		}
 
 		public static bool TryGetPortNumber(string section, string message, out int port)
