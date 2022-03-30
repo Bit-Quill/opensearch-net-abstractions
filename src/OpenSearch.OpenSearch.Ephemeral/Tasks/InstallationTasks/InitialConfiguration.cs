@@ -64,9 +64,9 @@ namespace OpenSearch.OpenSearch.Ephemeral.Tasks.InstallationTasks
 			if (!cluster.ClusterConfiguration.EnableSsl)
 			{
 				if (cluster.ClusterConfiguration.Artifact.ServerType == ServerType.OpenSearch)
-					File.AppendAllText(Path.Combine(fs.OpenSearchHome, "config", "opensearch.yml"), "plugins.security.disabled: false");
+					File.AppendAllText(Path.Combine(fs.OpenSearchHome, "config", "opensearch.yml"), "plugins.security.disabled: true");
 				if (cluster.ClusterConfiguration.Artifact.ServerType == ServerType.OpenDistro)
-					File.AppendAllText(Path.Combine(fs.OpenSearchHome, "config", "elasticsearch.yml"), "opendistro_security.disabled: false");
+					File.AppendAllText(Path.Combine(fs.OpenSearchHome, "config", "elasticsearch.yml"), "opendistro_security.disabled: true");
 			}
 
 			if (cluster.ClusterConfiguration.Artifact.ServerType == ServerType.ElasticSearch && cluster.ClusterConfiguration.EnableSsl)
