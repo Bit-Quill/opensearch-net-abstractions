@@ -113,12 +113,13 @@ namespace OpenSearch.OpenSearch.Managed.ConsoleWriters
 			section = match.Groups["section"].Value.Trim().Replace(_fullNamePrefix + ".", "");
 			node = match.Groups["node"].Value.Trim();
 			message = match.Groups["message"].Value.Trim();
-			started = TryGetStartedConfirmation(section, message, node);
+			started = TryGetStartedConfirmation(section, message);
 			return true;
 		}
 
 		private bool TryGetStartedConfirmation(string section, string message)
 		{
+
 			var inNodeSection = _securityPluginRegex.IsMatch(section);
 			return inNodeSection && message == "Node started";
 		}
